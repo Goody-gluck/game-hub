@@ -15,7 +15,7 @@ function App() {
       </GridItem>
       {/* we arapped aside in show to make sure it is only rendered on large devices */}
       <Show when={{lg: true}}>
-        <GridItem area="aside" bg="gold">Aside
+        <GridItem area="aside">Aside
         </GridItem>
       </Show>
         
