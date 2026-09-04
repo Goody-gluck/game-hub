@@ -2,16 +2,16 @@ import type { Game } from '@/hooks/useGames';
 import { Card, Heading, HStack, Image, Text} from '@chakra-ui/react';
 import PlatformIconList from './PlatrformIconList';
 import CriticScore from './CriticScore';
+import getCroppedImageUrl from '@/services/image-url';
 
 interface Props {
     game: Game;
 }
 const GameCard = ({game} : Props) => {
 
-    console.log("PARENT PLATFORMS:", game.parent_platforms)
   return (
     <Card.Root borderRadius={10} overflow={'hidden'}>
-        <Image src={game.background_image}/>
+        <Image src={getCroppedImageUrl(game.background_image)}/>
         <Card.Body>
             <Heading fontSize="2xl">{game.name}</Heading>
             <HStack justifyContent='space-between'>
