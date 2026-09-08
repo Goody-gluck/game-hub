@@ -5,11 +5,14 @@ import GenreList from "./components/GenreList"
 import { useState } from "react"
 import type { Genre } from "./hooks/useGenre"
 import PlatformSelector from "./components/PlatformSelector"
+import type { Platform } from "./hooks/useGames"
 
 
 function App() {
   // the below means the state can either be of type Genre or null, and we set the initial state to null
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null)
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null);
+
   return (
     // for the templateAreas we set it to objects because we want to set different screen sizes
     <Grid templateAreas={{
@@ -31,8 +34,8 @@ function App() {
         </GridItem>
       
       <GridItem area="main"> 
-        <PlatformSelector />
-        <GameGrid selectedGenre={selectedGenre} />
+        <PlatformSelector selectedPlatform={selectedPlatform} onSelectPlatform={(platform) => setSelectedPlatform(platform)} />
+        <GameGrid selectedPlatform={selectedPlatform} selectedGenre={selectedGenre} />
       </GridItem>
 
     </Grid>
