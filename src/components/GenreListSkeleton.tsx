@@ -1,5 +1,4 @@
-import React from 'react'
-import { HStack, Image, List, Skeleton, SkeletonText, Text } from '@chakra-ui/react'
+import { HStack, Skeleton, SkeletonText} from '@chakra-ui/react'
 
 
 const GenreListSkeleton = () => {
@@ -17,11 +16,3 @@ const GenreListSkeleton = () => {
 };
     
 export default GenreListSkeleton
-
-// Card.Root>
-//         {/* skeleton is like a placeholder that holds an Image that is been loaded */}
-//         <Skeleton height={'200px'}/>
-//         <Card.Body>
-//             <SkeletonText />
-//         </Card.Body>
-//     </Card.Root>

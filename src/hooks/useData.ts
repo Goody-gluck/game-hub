@@ -7,7 +7,7 @@ interface fetchResponse <T> {
     results: T[];
 }
 // once we declare a paramter optional, all the parameters after it must also be optional, so we have to make deps optional as well
-const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?: any[]) => {
+const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?: unknown[]) => {
      const [data, setData] = useState<T[]>([]);
             const [error, setError] = useState('');
             const [isLoading, setLoading] = useState(false);
