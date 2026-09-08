@@ -2,9 +2,13 @@ import { Grid, GridItem, Show } from "@chakra-ui/react"
 import NavBar from "./components/NavBar"
 import GameGrid from "./components/GameGrid"
 import GenreList from "./components/GenreList"
+import { useState } from "react"
+import type { Genre } from "./hooks/useGenre"
 
 
 function App() {
+  // the below means the state can either be of type Genre or null, and we set the initial state to null
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null)
   return (
     // for the templateAreas we set it to objects because we want to set different screen sizes
     <Grid templateAreas={{
@@ -22,11 +26,11 @@ function App() {
       
         <GridItem area="aside" 
         paddingX={"5"} display={{base: 'none', lg: 'block'}}>
-          <GenreList />
+          <GenreList onSelectedGenre={(genre) => setSelectedGenre(genre)} />
         </GridItem>
       
       <GridItem area="main"> 
-        <GameGrid />
+        <GameGrid selectedGenre={selectedGenre} />
       </GridItem>
 
     </Grid>

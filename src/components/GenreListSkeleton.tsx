@@ -1,6 +1,7 @@
 import React from 'react'
 import { HStack, Image, List, Skeleton, SkeletonText, Text } from '@chakra-ui/react'
 
+
 const GenreListSkeleton = () => {
     const skeletons = [1, 2, 3, 4, 5,6,7,8]
   return (
