@@ -8,19 +8,22 @@ function App() {
   return (
     // for the templateAreas we set it to objects because we want to set different screen sizes
     <Grid templateAreas={{
-      base: `"nav" "main"`,
-      lg: `"nav nav" "aside main"` 
-    }}>
+      base: '"nav" "main"',
+      lg: '"nav nav" "aside main"' 
+    }}
+      templateColumns={{
+        base: '1fr',
+        lg: '200px 1fr'
+      }}
+    >
       <GridItem area="nav">
           <NavBar />
       </GridItem>
-      {/* we arapped aside in show to make sure it is only rendered on large devices */}
-      <Show when={{lg: true}}>
-        <GridItem area="aside">
+      
+        <GridItem area="aside" 
+        paddingX={"5"} display={{base: 'none', lg: 'block'}}>
           <GenreList />
         </GridItem>
-      </Show>
-        
       
       <GridItem area="main"> 
         <GameGrid />
