@@ -26,7 +26,8 @@ const useGames = (gameQuery: GameQuery) => useData<Game>(`/games`,
      {params:
          {genres: gameQuery.genre?.id,
           platforms: gameQuery.platform?.id,
-          ordering: gameQuery.sortOrder
+          ordering: gameQuery.sortOrder,
+          search: gameQuery.searchText
         //   with this query object, we don't need to add sort order as another dependency is the benefit of encapsulating related data into a single object, we can just pass the gameQuery object as a dependency and it will re-render when any of the properties change
         }}, 
          [gameQuery])
