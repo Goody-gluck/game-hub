@@ -1,6 +1,5 @@
 import type { GameQuery } from "@/App";
 import useData from "./useData";
-import type { Genre } from "./useGenre";
 
 export interface Platform {
     id: number;
@@ -23,7 +22,14 @@ export interface Game {
 }
 // using typescript to define the shape of the response
 
-const useGames = (gameQuery: GameQuery) => useData<Game>(`/games`, {params: {genres: gameQuery.genre?.id, platforms: gameQuery.platform?.id}}, [gameQuery])
+const useGames = (gameQuery: GameQuery) => useData<Game>(`/games`,
+     {params:
+         {genres: gameQuery.genre?.id,
+          platforms: gameQuery.platform?.id,
+          ordering: gameQuery.sortOrder
+        //   with this query object, we don't need to add sort order as another dependency is the benefit of encapsulating related data into a single object, we can just pass the gameQuery object as a dependency and it will re-render when any of the properties change
+        }}, 
+         [gameQuery])
 
 
 export default useGames; 
