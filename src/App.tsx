@@ -1,4 +1,4 @@
-import { Grid, GridItem, Show } from "@chakra-ui/react"
+import { Grid, GridItem } from "@chakra-ui/react"
 import NavBar from "./components/NavBar"
 import GameGrid from "./components/GameGrid"
 import GenreList from "./components/GenreList"
@@ -7,11 +7,17 @@ import type { Genre } from "./hooks/useGenre"
 import PlatformSelector from "./components/PlatformSelector"
 import type { Platform } from "./hooks/useGames"
 
+// below we want to create a query object pattern, needed the query the games in order to make our code cleaner and easier to understand
 
+export interface GameQuery {
+  genre: Genre | null;
+  platform: Platform | null;
+}
 function App() {
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
   // the below means the state can either be of type Genre or null, and we set the initial state to null
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null);
+  // const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  // const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null);
 
   return (
     // for the templateAreas we set it to objects because we want to set different screen sizes
@@ -30,12 +36,12 @@ function App() {
       
         <GridItem area="aside" 
         paddingX={"5"} display={{base: 'none', lg: 'block'}}>
-          <GenreList selectedGenre={selectedGenre} onSelectedGenre={(genre) => setSelectedGenre(genre)} />
+          <GenreList selectedGenre={gameQuery.genre} onSelectedGenre={(genre) => setGameQuery({...gameQuery, genre})} />
         </GridItem>
       
       <GridItem area="main"> 
-        <PlatformSelector selectedPlatform={selectedPlatform} onSelectPlatform={(platform) => setSelectedPlatform(platform)} />
-        <GameGrid selectedPlatform={selectedPlatform} selectedGenre={selectedGenre} />
+        <PlatformSelector selectedPlatform={gameQuery.platform} onSelectPlatform={(platform) => setGameQuery({...gameQuery, platform})} />
+        <GameGrid gameQuery={gameQuery} />
       </GridItem>
 
     </Grid>
