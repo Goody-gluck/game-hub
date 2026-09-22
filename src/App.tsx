@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, GridItem, HStack } from "@chakra-ui/react"
+import { Box, Flex, Grid, GridItem } from "@chakra-ui/react"
 import NavBar from "./components/NavBar"
 import GameGrid from "./components/GameGrid"
 import GenreList from "./components/GenreList"
@@ -7,7 +7,6 @@ import type { Genre } from "./hooks/useGenre"
 import PlatformSelector from "./components/PlatformSelector"
 import type { Platform } from "./hooks/useGames"
 import SortSelector from "./components/SortSelector"
-import SearchInput from "./components/SearchInput"
 import GameHeading from "./components/GameHeading"
 
 // below we want to create a query object pattern, needed the query the games in order to make our code cleaner and easier to understand
